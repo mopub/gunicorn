@@ -45,7 +45,7 @@ class GeventWorker(AsyncWorker):
     def setup(cls):
         from gevent import monkey
         monkey.noisy = False
-        monkey.patch_all()
+        monkey.patch_all(httplib=False)
 
     def timeout_ctx(self):
         return gevent.Timeout(self.cfg.keepalive, False)
